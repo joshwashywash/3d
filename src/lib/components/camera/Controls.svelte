@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { OrthographicCamera, PerspectiveCamera } from 'three';
 	import useControls from '$lib/hooks/controls';
+	import { onDestroy } from 'svelte';
 	import { useFrame } from '@threlte/core';
 
 	export let camera: OrthographicCamera | PerspectiveCamera;
@@ -13,6 +14,10 @@
 			controls.update(delta);
 		});
 	}
+
+	onDestroy(() => {
+		controls.dispose();
+	});
 </script>
 
 <slot {controls} />
