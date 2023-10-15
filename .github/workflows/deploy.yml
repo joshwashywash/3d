@@ -1,6 +1,7 @@
 name: pnpm Example Workflow
 on:
   push:
+  branches: [main]
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -19,20 +20,15 @@ jobs:
         cache: 'pnpm'
     - name: Install dependencies
       run: pnpm install
+    - name: Build
+      run: pnpm build
+    - name: Setup pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./build
+    - name: Deploy to pages
+      id: deployment
+      uses: actions/deploy-pages@v1
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v2
