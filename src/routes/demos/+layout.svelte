@@ -1,3 +1,3 @@
-<div class="bg-fg h-screen">
+<div class="h-screen">
 	<slot />
 </div>
