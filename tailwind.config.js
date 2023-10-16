@@ -5,8 +5,8 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		colors: {
-			bg: colors.yellow[400],
-			fg: colors.blue[900]
+			yellow: colors.yellow[400],
+			blue: colors.blue[900]
 		},
 		container: {
 			center: true,

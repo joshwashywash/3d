@@ -17,6 +17,7 @@
 
 <T.DirectionalLight position={[10, 10, 10]} />
 <T.AmbientLight intensity={0.3} />
+<T.Color args={['black']} attach="background" />
 
 <Controls {camera} let:controls>
 	{#await gltf then suzanne}

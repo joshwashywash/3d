@@ -67,7 +67,7 @@
 		<Scene />
 	</Canvas>
 	<div class="absolute left-4 top-4 space-y-2">
-		<p class="text-bg">draw in the white square</p>
+		<p class="text-yellow">draw in the white square</p>
 		<canvas
 			on:touchstart|preventDefault
 			{width}
