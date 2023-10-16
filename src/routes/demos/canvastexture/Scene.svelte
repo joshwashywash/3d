@@ -6,10 +6,11 @@
 	import { T } from '@threlte/core';
 	import { getContext } from 'svelte';
 	import { useGltf } from '@threlte/extras';
+	import { base } from '$app/paths';
 
 	const canvas = getContext<Writable<HTMLCanvasElement | null>>('canvas');
 
-	const gltf = useGltf<SuzanneGLTF>('/suzanne/Suzanne.gltf');
+	const gltf = useGltf<SuzanneGLTF>(`${base}/suzanne/Suzanne.gltf`);
 	const camera = new PerspectiveCamera();
 </script>
 
