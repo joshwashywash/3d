@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"predeploy": "pnpm build",
-		"deploy": "gh-pages -d build",
+		"deploy": "gh-pages -d build -t true",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
