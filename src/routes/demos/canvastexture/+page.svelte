@@ -4,6 +4,8 @@
 	import { Canvas } from '@threlte/core';
 	import { setContext } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
+	import portal from '$lib/actions/portal';
+	import { get as getPortalContext } from '../portalContext';
 
 	export let width = 128;
 	export let height = width;
@@ -60,20 +62,21 @@
 	) => {
 		store.set(canvas);
 	};
+
+	const portal$ = getPortalContext();
 </script>
 
-<div class="relative h-full w-full">
-	<Canvas>
-		<Scene />
-	</Canvas>
-	<div class="absolute left-4 top-4 space-y-2">
-		<p class="text-yellow">draw in the white square</p>
-		<canvas
-			on:touchstart|preventDefault
-			{width}
-			{height}
-			use:draw={{ lineWidth: 2 }}
-			use:canvasContext={canvas}
-		/>
-	</div>
+<div class="flex flex-col gap-2 items-center" use:portal={$portal$}>
+	<p class="text-blue">draw in the white square</p>
+	<canvas
+		on:touchstart|preventDefault
+		{width}
+		{height}
+		use:draw={{ lineWidth: 2 }}
+		use:canvasContext={canvas}
+	/>
 </div>
+
+<Canvas>
+	<Scene />
+</Canvas>
