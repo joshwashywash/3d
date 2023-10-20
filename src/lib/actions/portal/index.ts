@@ -1,6 +1,6 @@
 import type { Action } from 'svelte/action';
 
-const portal: Action<HTMLElement, HTMLElement> = (element, parent) => {
+const portal: Action<HTMLElement, HTMLElement> = (element, parent = document.body) => {
 	const update = (e: HTMLElement) => {
 		e.appendChild(element);
 	};
