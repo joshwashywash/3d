@@ -19,13 +19,12 @@
 		<link rel="modulepreload" href="../_app/immutable/chunks/stores.20e39ece.js">
 		<link rel="modulepreload" href="../_app/immutable/nodes/2.076582b8.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/portalContext.df855df4.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/4.9139731f.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/vertex.01b6d221.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/index.28acd762.js"><title>HTML Canvas as a Texture Map</title><!-- HEAD_svelte-3nrwy5_START --><meta name="description" content="A demonstration showing how to use an HTML canvas as a texture map in three.js"><!-- HEAD_svelte-3nrwy5_END -->
+		<link rel="modulepreload" href="../_app/immutable/nodes/6.33989f0a.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.28acd762.js"><title>Rounded Plane Geometry</title><!-- HEAD_svelte-3nrwy5_START --><meta name="description" content="Implementation of a rounded plane geometry in Threlte"><!-- HEAD_svelte-3nrwy5_END -->
 </head>
 
 <body data-sveltekit-preload-data="hover">
-	<div style="display: contents">   <div class="h-screen"><div class="h-full grid grid-rows-3"><div class="row-span-2"><div class="flex flex-col gap-2 items-center"><p class="text-blue" data-svelte-h="svelte-zrg3ud">draw in the white square</p> <canvas width="128" height="128"></canvas></div> <canvas class="svelte-o3oskp"> </canvas></div> <div class="p-2 grid items-center justify-center bg-yellow"></div></div></div> 
+	<div style="display: contents">   <div class="h-screen"><div class="h-full grid grid-rows-3"><div class="row-span-2"><canvas class="svelte-o3oskp"> </canvas></div> <div class="p-2 grid items-center justify-center bg-yellow"></div></div></div> 
 			
 			<script>
 				{
@@ -36,14 +35,14 @@
 
 					const element = document.currentScript.parentElement;
 
-					const data = [null,null,{"type":"data","data":{description:"A demonstration showing how to use an HTML canvas as a texture map in three.js",title:"HTML Canvas as a Texture Map"},"uses":{}}];
+					const data = [null,null,{"type":"data","data":{description:"Implementation of a rounded plane geometry in Threlte",title:"Rounded Plane Geometry"},"uses":{}}];
 
 					Promise.all([
 						import("../_app/immutable/entry/start.98d33104.js"),
 						import("../_app/immutable/entry/app.783b269d.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 2, 4],
+							node_ids: [0, 2, 6],
 							data,
 							form: null,
 							error: null
