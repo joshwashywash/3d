@@ -9,8 +9,8 @@
 
 	const portal$ = getContext();
 
-	const width$ = writable(1);
-	const height$ = writable(1);
+	const width$ = writable(2);
+	const height$ = writable(2);
 
 	const radius$ = writable(0.5);
 
