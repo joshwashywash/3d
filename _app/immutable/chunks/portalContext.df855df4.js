@@ -1,1 +1,0 @@
-import{V as o,H as r,N as n}from"./scheduler.ff8794ee.js";const a=e=>{const t=Symbol();return{get(){if(o(t))return r(t);throw new Error(`${e} context was never set`)},set(s){return n(t,s)}}},{get:c,set:g}=a("portal");export{c as g,g as s};
