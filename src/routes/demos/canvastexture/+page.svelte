@@ -1,26 +1,22 @@
 <script lang="ts">
-	import Scene from './Scene.svelte';
-	import type { Action } from 'svelte/action';
-	import { Canvas } from '@threlte/core';
-	import { setContext } from 'svelte';
-	import { writable, type Writable } from 'svelte/store';
-	import portal from '$lib/actions/portal';
-	import { get as getPortalContext } from '../portalContext';
+	import Controls from '$lib/components/camera/Controls.svelte';
 	import draw from './draw';
+	import portal from '$lib/actions/portal';
+	import type { SuzanneGLTF } from './types';
+	import { PerspectiveCamera } from 'three';
+	import { T } from '@threlte/core';
+	import { base } from '$app/paths';
+	import { get as getPortalContext } from '../portalContext';
+	import { useGltf } from '@threlte/extras';
 
 	export let width = 128;
 	export let height = width;
 
-	const canvas = setContext('canvas', writable<HTMLCanvasElement | null>(null));
-
-	const canvasContext: Action<HTMLCanvasElement, Writable<HTMLCanvasElement | null>> = (
-		canvas,
-		store
-	) => {
-		store.set(canvas);
-	};
-
+	let canvas: HTMLCanvasElement;
 	const portal$ = getPortalContext();
+
+	const gltf = useGltf<SuzanneGLTF>(`${base}/suzanne/Suzanne.gltf`);
+	const camera = new PerspectiveCamera();
 </script>
 
 <div class="flex flex-col gap-2 items-center" use:portal={$portal$}>
@@ -30,10 +26,42 @@
 		{width}
 		{height}
 		use:draw={{ lineWidth: 2 }}
-		use:canvasContext={canvas}
+		bind:this={canvas}
 	/>
 </div>
 
-<Canvas>
-	<Scene />
-</Canvas>
+<T.Color args={['black']} attach="background" />
+
+<T is={camera} position.z={10} makeDefault />
+
+<T.DirectionalLight position={[10, 10, 10]} />
+<T.AmbientLight intensity={0.3} />
+
+<Controls {camera} let:controls>
+	{#await gltf then suzanne}
+		<T.Mesh
+			on:create={({ ref }) => {
+				controls.fitToBox(ref, true);
+			}}
+			geometry={suzanne.nodes.Suzanne.geometry}
+		>
+			<T.MeshStandardMaterial>
+				{#if canvas !== undefined}
+					<T.CanvasTexture
+						image={canvas}
+						attach="map"
+						on:create={({ cleanup, ref }) => {
+							const update = () => {
+								ref.needsUpdate = true;
+							};
+							ref.image.addEventListener('draw', update);
+							cleanup(() => {
+								ref.image.removeEventListener('draw', update);
+							});
+						}}
+					/>
+				{/if}
+			</T.MeshStandardMaterial>
+		</T.Mesh>
+	{/await}
+</Controls>
