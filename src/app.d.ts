@@ -7,8 +7,6 @@ declare global {
 		interface PageData {
 			title: string;
 			description: string;
-			context: unknown;
-			setContext: (context: unknown) => {};
 		}
 		// interface Platform {}
 	}

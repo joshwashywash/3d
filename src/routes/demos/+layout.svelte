@@ -2,7 +2,9 @@
 	import { Canvas } from '@threlte/core';
 	import { page } from '$app/stores';
 
-	$page.data.setContext($page.data.context);
+	if ($page.data.context) {
+		$page.data.setContext($page.data.context);
+	}
 </script>
 
 <div class="h-screen grid grid-rows-3">
