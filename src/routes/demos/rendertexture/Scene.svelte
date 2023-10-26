@@ -4,9 +4,9 @@
 	import { ContactShadows, Text, interactivity } from '@threlte/extras';
 	import { PerspectiveCamera } from 'three';
 	import { T, useFrame } from '@threlte/core';
-	import { get } from '../portalContext';
-	import { writable } from 'svelte/store';
-	import portal from '$lib/actions/portal';
+	import { get } from './context';
+
+	const { color, text } = get();
 
 	const mainCamera = new PerspectiveCamera();
 	mainCamera.position.set(5, 5, 5);
@@ -29,11 +29,6 @@
 	});
 
 	interactivity();
-
-	const portal$ = get();
-
-	const color$ = writable('#33ff00');
-	const text$ = writable('hello');
 </script>
 
 <T is={controls.camera} makeDefault />
@@ -41,24 +36,13 @@
 <T.AmbientLight intensity={0.5} />
 <T.DirectionalLight position={[10, 10, 5]} />
 
-<div class="flex flex-col gap-2" use:portal={$portal$}>
-	<label class="flex items-center gap-2">
-		color
-		<input type="color" class="rounded-md px-1" bind:value={$color$} />
-	</label>
-	<label class="flex items-center gap-2">
-		text
-		<input class="px-3 py-2 rounded-md" bind:value={$text$} />
-	</label>
-</div>
-
 <T.Mesh>
 	<T.MeshStandardMaterial>
 		<RenderTexture {camera}>
-			<T.Color attach="background" args={[$color$]} />
+			<T.Color attach="background" args={[$color]} />
 			<Text
 				position.x={x}
-				text={$text$}
+				text={$text}
 				color="#555"
 				fontSize={4}
 				anchorX="center"
