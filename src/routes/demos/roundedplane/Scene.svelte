@@ -3,7 +3,6 @@
 	import useClamp from '$lib/hooks/clamp';
 	import { OrbitControls } from '@threlte/extras';
 	import { T } from '@threlte/core';
-
 	import { get } from './context';
 
 	const { width, height, radius } = get();
