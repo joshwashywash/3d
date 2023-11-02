@@ -1,18 +1,11 @@
 <script lang="ts">
 	import RenderTexture from './RenderTexture.svelte';
-	import useControls from '$lib/hooks/controls';
-	import { ContactShadows, Text, interactivity } from '@threlte/extras';
+	import { ContactShadows, OrbitControls, Text } from '@threlte/extras';
 	import { PerspectiveCamera } from 'three';
 	import { T, useFrame } from '@threlte/core';
 	import { get } from './context';
 
 	const { color, text } = get();
-
-	const mainCamera = new PerspectiveCamera();
-	mainCamera.position.set(5, 5, 5);
-	mainCamera.fov = 25;
-
-	const controls = useControls(mainCamera);
 
 	const camera = new PerspectiveCamera();
 	camera.position.setZ(10);
@@ -22,16 +15,15 @@
 	let y = 0;
 
 	useFrame((_, delta) => {
-		controls.update(delta);
 		_delta += delta;
 		x = 2 * Math.sin(_delta);
 		y = 2 * Math.cos(_delta);
 	});
-
-	interactivity();
 </script>
 
-<T is={controls.camera} makeDefault />
+<T.PerspectiveCamera makeDefault position.x={5} position.y={5} position.z={5} fov={25}>
+	<OrbitControls />
+</T.PerspectiveCamera>
 
 <T.AmbientLight intensity={0.5} />
 <T.DirectionalLight position={[10, 10, 5]} />
