@@ -17,4 +17,3 @@
 		<input type="text" pattern="\d+" class="rounded-md px-1" bind:value={$radius} />
 	</label>
 </div>
-
