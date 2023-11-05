@@ -1,13 +1,23 @@
 <script lang="ts">
-	import { set } from './context';
-	import { writable } from 'svelte/store';
-	import Scene from './Scene.svelte';
+	import RoundedPlaneGeometry from './RoundedPlaneGeometry.svelte';
+	import { OrbitControls } from '@threlte/extras';
+	import { T, useFrame } from '@threlte/core';
 
-	set({
-		height: writable(2),
-		radius: writable(0.5),
-		width: writable(2)
+	let d = 0;
+	let ry = 0;
+	useFrame((_, delta) => {
+		d += delta;
+		ry = 0.5 * Math.sin(d);
 	});
 </script>
 
-<Scene />
+<T.AmbientLight intensity={1} />
+
+<T.PerspectiveCamera makeDefault position.z={5}>
+	<OrbitControls />
+</T.PerspectiveCamera>
+
+<T.Mesh rotation.y={ry}>
+	<RoundedPlaneGeometry width={2} height={2} radius={0.5} />
+	<T.MeshNormalMaterial />
+</T.Mesh>
