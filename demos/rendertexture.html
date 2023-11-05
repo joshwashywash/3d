@@ -1,49 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" href="../favicon.png" />
-	<meta name="viewport" content="width=device-width" />
-	
-		<link href="../_app/immutable/assets/0.760d74b4.css" rel="stylesheet">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		
+		<link href="../_app/immutable/assets/0.aa9b3758.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/T.2388fa67.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.a52d522e.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.eeffc8b1.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.5507f1cc.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/index.325bf815.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.c9576207.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/index.c60d28eb.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/0.b323e02e.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/stores.f35bf4fb.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.70ff8bf2.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/T.6fa6c1bd.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/5.ab80779d.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/context.069ef403.js"><title>Render Texture Example</title><!-- HEAD_svelte-3nrwy5_START --><meta name="description" content="Demo using a render target as a texture in three.js."><!-- HEAD_svelte-3nrwy5_END -->
-</head>
+		<link rel="modulepreload" href="../_app/immutable/entry/start.58fa2833.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.1852cbe1.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.8c896379.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.be889559.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.b2e4624d.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.3eb9a679.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.0a7f80b1.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.1971119b.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.bd818414.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.1e47dce8.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/T.c6e51e5d.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/4.c685ac5c.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/context.12f99c1e.js"><title>Render Texture Example</title><!-- HEAD_svelte-3nrwy5_START --><meta name="description" content="Demo using a render target as a texture in three.js."><!-- HEAD_svelte-3nrwy5_END -->
+	</head>
 
-<body data-sveltekit-preload-data="hover">
-	<div style="display: contents">   <div class="h-screen grid grid-rows-3"><div class="row-span-2"><canvas class="svelte-o3oskp"> </canvas></div> <div class="p-2 grid justify-center items-center bg-yellow"><div class="flex flex-col gap-2"><label class="flex items-center gap-2">color
-		<input type="color" class="rounded-md px-1" value="#11aaff"></label> <label class="flex items-center gap-2">text
-		<input class="px-3 py-2 rounded-md" value="hello"></label></div></div></div> 
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">   <div class="flex"><aside class="p-4 sm:flex flex-col gap-2 w-full max-w-[20rem] bg-yellow hidden"><a class="underline" href="/demos/rendertexture">render texture</a><a class="underline" href="/demos/roundedplane">rounded plane</a></aside> <main class="h-screen flex-grow"><canvas class="svelte-o3oskp"> </canvas></main></div> 
 			
 			<script>
 				{
-					__sveltekit_1sr0ot3 = {
+					__sveltekit_11lykra = {
 						base: new URL("..", location).pathname.slice(0, -1),
 						env: {}
 					};
 
 					const element = document.currentScript.parentElement;
 
-					const data = [null,null,{"type":"data","data":{description:"Demo using a render target as a texture in three.js.",title:"Render Texture Example"},"uses":{}}];
+					const data = [null,{"type":"data","data":{links:[{href:"rendertexture",text:"render texture"},{href:"roundedplane",text:"rounded plane"}]},"uses":{}},null];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.a52d522e.js"),
-						import("../_app/immutable/entry/app.c9576207.js")
+						import("../_app/immutable/entry/start.58fa2833.js"),
+						import("../_app/immutable/entry/app.3eb9a679.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 2, 5],
+							node_ids: [0, 2, 4],
 							data,
 							form: null,
 							error: null
@@ -52,6 +50,5 @@
 				}
 			</script>
 		</div>
-</body>
-
+	</body>
 </html>
