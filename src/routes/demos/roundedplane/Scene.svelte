@@ -1,10 +1,10 @@
 <script lang="ts">
 	import RoundedPlaneGeometry from './RoundedPlaneGeometry.svelte';
 	import useClamp from '$lib/hooks/clamp';
-	import { T, useFrame } from '@threlte/core';
-	import { get } from './context';
-	import { derived } from 'svelte/store';
 	import { OrbitControls } from '@threlte/extras';
+	import { T, useFrame } from '@threlte/core';
+	import { derived } from 'svelte/store';
+	import { get } from './context';
 
 	const { width, height, radius } = get();
 

@@ -1,17 +1,10 @@
-import { writable } from 'svelte/store';
-import type { PageLoad } from './$types';
 import scene from './Scene.svelte';
-import { set } from './context';
+import type { PageLoad } from './$types';
 
-export const load: PageLoad = ({ data }) => {
+export const load: PageLoad = () => {
 	return {
-		...data,
-		scene,
-		setContext() {
-			set({
-				color: writable('#11aaff'),
-				text: writable('hello')
-			});
-		}
+		description: 'Demo using a render target as a texture in three.js.',
+		title: 'Render Texture Example',
+		scene
 	};
 };
