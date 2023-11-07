@@ -17,7 +17,8 @@ type Link = {
 
 const links: Link[] = [
 	{ href: 'rendertexture', text: 'render texture' },
-	{ href: 'roundedplane', text: 'rounded plane' }
+	{ href: 'roundedplane', text: 'rounded plane' },
+	{ href: 'rollingcube', text: 'rolling cube' }
 ];
 
 export const load: LayoutServerLoad = () => {
