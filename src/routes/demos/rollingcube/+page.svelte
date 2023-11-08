@@ -3,6 +3,7 @@
 	import { T, useThrelte } from '@threlte/core';
 	import { derived } from 'svelte/store';
 	import { tweened } from 'svelte/motion';
+	import { base } from '$app/paths';
 
 	const BOX_SIZE = 1;
 
@@ -61,7 +62,7 @@
 		}
 	};
 
-	const texture = useTexture('/uv_grid.jpeg');
+	const texture = useTexture(`${base}/uv_grid.jpeg`);
 
 	interactivity();
 </script>
