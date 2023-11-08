@@ -62,7 +62,7 @@
 		}
 	};
 
-	const texture = useTexture(`${base}/uv_grid.jpeg`);
+	const texture = useTexture(`${base}/spiral.png`);
 
 	interactivity();
 </script>
