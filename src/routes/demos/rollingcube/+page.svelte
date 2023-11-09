@@ -16,51 +16,45 @@
 	const degrees = tweened(0);
 	const radians = derived(degrees, degreesToRadians);
 
+	let x = HALF_BOX_SIZE;
 	let xx = 0;
 
-	let x = HALF_BOX_SIZE;
-	let dir: 'left' | 'right' = 'left';
 	let rz = 0;
 
-	let rolling = false;
+	const rotate = (size = 1) => {
+		let rolling = false;
+		const rotate = async (dir: -1 | 1) => {
+			if (!rolling) {
+				rolling = true;
 
-	const rotateLeft = async () => {
-		if (!rolling) {
-			rolling = true;
-			if (dir !== 'left') {
-				dir = 'left';
-				xx -= BOX_SIZE;
-				x = HALF_BOX_SIZE;
+				if (Math.sign(x) === dir) {
+					xx += dir * size;
+					x *= -1;
+				}
+
+				const adjusted = Math.sign(x);
+
+				await degrees.update((u) => u + adjusted * 90);
+
+				xx -= adjusted * size;
+
+				await degrees.set(0, { duration: 0 });
+
+				rz += adjusted * 0.5 * Math.PI;
+				rolling = false;
 			}
-			await degrees
-				.update((u) => u + 90)
-				.then(() => {
-					xx -= BOX_SIZE;
-					degrees.set(0, { duration: 0 });
-					rz += 0.5 * Math.PI;
-					rolling = false;
-				});
-		}
+		};
+		return {
+			left() {
+				rotate(-1);
+			},
+			right() {
+				rotate(1);
+			}
+		};
 	};
 
-	const rotateRight = async () => {
-		if (!rolling) {
-			rolling = true;
-			if (dir !== 'right') {
-				dir = 'right';
-				xx += BOX_SIZE;
-				x = -HALF_BOX_SIZE;
-			}
-			await degrees
-				.update((u) => u - 90)
-				.then(() => {
-					xx += BOX_SIZE;
-					degrees.set(0, { duration: 0 });
-					rz -= 0.5 * Math.PI;
-					rolling = false;
-				});
-		}
-	};
+	const { left, right } = rotate(BOX_SIZE);
 
 	const texture = useTexture(`${base}/spiral.png`);
 
@@ -81,10 +75,10 @@
 	</Portal>
 </T.DirectionalLight>
 
-<T.Group on:click={rotateLeft} on:contextmenu={rotateRight} rotation.z={$radians} position.x={xx}>
+<T.Group on:click={left} on:contextmenu={right} rotation.z={$radians} position.x={xx}>
 	{#await texture then map}
 		<T.Mesh position.x={x} position.y={HALF_BOX_SIZE} rotation.z={rz}>
-			<T.MeshStandardMaterial {map} color="ff00ff" />
+			<T.MeshStandardMaterial {map} color="#ff00ff" />
 			<T.BoxGeometry />
 		</T.Mesh>
 	{/await}
