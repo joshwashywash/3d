@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { Canvas } from '@threlte/core';
+	import { Canvas, T } from '@threlte/core';
 	import { base } from '$app/paths';
-	import { page } from '$app/stores';
 
 	export let data;
 </script>
@@ -14,6 +13,7 @@
 	</aside>
 	<main class="h-screen flex-grow">
 		<Canvas>
+			<T.Color args={['black']} attach="background" />
 			<slot />
 		</Canvas>
 	</main>
