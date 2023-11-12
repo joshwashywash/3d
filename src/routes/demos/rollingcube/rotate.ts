@@ -10,12 +10,12 @@ export const rotate = (size = 1) => {
 	const degrees = tweened(0);
 	const radians = derived(degrees, degToRad);
 	const rolling = currentWritable(false);
-	const rotate = async (dir: -1 | 1) => {
+	const rotate = async (direction: -1 | 1) => {
 		if (!rolling.current) {
 			rolling.set(true);
 
-			if (Math.sign(position.current) === dir) {
-				groupPosition.update((xx) => xx + dir * size);
+			if (Math.sign(position.current) === direction) {
+				groupPosition.update((xx) => xx + direction * size);
 				position.update((x) => (x *= -1));
 			}
 
