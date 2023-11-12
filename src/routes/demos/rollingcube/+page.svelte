@@ -10,7 +10,7 @@
 
 	const { scene } = useThrelte();
 
-	const { left, right, radians, rz, x, xx } = rotate(BOX_SIZE);
+	const { left, right, radians, rotation, position, groupPosition } = rotate(BOX_SIZE);
 
 	const texture = useTexture(`${base}/spiral.png`);
 
@@ -31,9 +31,9 @@
 	</Portal>
 </T.DirectionalLight>
 
-<T.Group on:click={left} on:contextmenu={right} rotation.z={$radians} position.x={$xx}>
+<T.Group on:click={left} on:contextmenu={right} rotation.z={$radians} position.x={$groupPosition}>
 	{#await texture then map}
-		<T.Mesh position.x={$x} position.y={HALF_BOX_SIZE} rotation.z={$rz}>
+		<T.Mesh position.x={$position} position.y={HALF_BOX_SIZE} rotation.z={$rotation}>
 			<T.MeshStandardMaterial {map} />
 			<T.BoxGeometry />
 		</T.Mesh>
