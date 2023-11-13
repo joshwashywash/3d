@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Grid, OrbitControls, Portal, interactivity, useTexture } from '@threlte/extras';
+	import { Grid, OrbitControls, Portal, useTexture } from '@threlte/extras';
 	import { T, useThrelte } from '@threlte/core';
 	import { base } from '$app/paths';
 	import { rotate } from './rotate';
@@ -26,8 +26,6 @@
 	} = rotate(BOX_SIZE);
 
 	const texture = useTexture(`${base}/spiral.png`);
-
-	interactivity();
 </script>
 
 <svelte:document
@@ -64,8 +62,6 @@
 </T.DirectionalLight>
 
 <T.Group
-	on:click={up}
-	on:contextmenu={down}
 	rotation.x={-$radiansX}
 	rotation.z={$radiansZ}
 	position.x={$groupPositionX}

@@ -1,8 +1,10 @@
-import { derived, readonly, writable, type Writable } from 'svelte/store';
-import { tweened, type Tweened } from 'svelte/motion';
-import { currentWritable } from '@threlte/core';
 import type { CurrentWritable } from '@threlte/core';
+import type { Tweened } from 'svelte/motion';
+import type { Writable } from 'svelte/store';
+import { currentWritable } from '@threlte/core';
 import { degToRad } from 'three/src/math/MathUtils';
+import { derived, readonly, writable } from 'svelte/store';
+import { tweened } from 'svelte/motion';
 
 const createRotate = (size: number) => {
 	const rolling = currentWritable(false);
