@@ -10,12 +10,44 @@
 
 	const { scene } = useThrelte();
 
-	const { left, right, radians, rotation, position, groupPosition } = rotate(BOX_SIZE);
+	const {
+		left,
+		right,
+		up,
+		down,
+		radiansX,
+		radiansZ,
+		rotationX,
+		rotationZ,
+		positionX,
+		positionZ,
+		groupPositionX,
+		groupPositionZ
+	} = rotate(BOX_SIZE);
 
 	const texture = useTexture(`${base}/spiral.png`);
 
 	interactivity();
 </script>
+
+<svelte:document
+	on:keydown={({ key }) => {
+		switch (true) {
+			case key === 'ArrowUp':
+				up();
+				break;
+			case key === 'ArrowDown':
+				down();
+				break;
+			case key === 'ArrowLeft':
+				left();
+				break;
+			case key === 'ArrowRight':
+				right();
+				break;
+		}
+	}}
+/>
 
 <T.AmbientLight />
 
@@ -31,9 +63,22 @@
 	</Portal>
 </T.DirectionalLight>
 
-<T.Group on:click={left} on:contextmenu={right} rotation.z={$radians} position.x={$groupPosition}>
+<T.Group
+	on:click={up}
+	on:contextmenu={down}
+	rotation.x={-$radiansX}
+	rotation.z={$radiansZ}
+	position.x={$groupPositionX}
+	position.z={$groupPositionZ}
+>
 	{#await texture then map}
-		<T.Mesh position.x={$position} position.y={HALF_BOX_SIZE} rotation.z={$rotation}>
+		<T.Mesh
+			position.x={$positionX}
+			position.y={HALF_BOX_SIZE}
+			position.z={$positionZ}
+			rotation.x={-$rotationX}
+			rotation.z={$rotationZ}
+		>
 			<T.MeshStandardMaterial {map} />
 			<T.BoxGeometry />
 		</T.Mesh>
