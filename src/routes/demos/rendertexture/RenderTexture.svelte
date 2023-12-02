@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { OrthographicCamera, PerspectiveCamera } from 'three';
-	import { HierarchicalObject, T, useFrame } from '@threlte/core';
+	import { HierarchicalObject, T, useTask, useThrelte } from '@threlte/core';
 	import { Scene, WebGLRenderTarget } from 'three';
 	import { onDestroy } from 'svelte';
 
@@ -14,7 +14,9 @@
 	const target = new WebGLRenderTarget();
 	$: target.setSize(width, height);
 
-	useFrame(({ renderer }) => {
+	const { renderer } = useThrelte();
+
+	useTask(() => {
 		renderer.setRenderTarget(target);
 		renderer.render(ref, camera);
 		renderer.setRenderTarget(null);

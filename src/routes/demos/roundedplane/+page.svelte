@@ -1,11 +1,11 @@
 <script lang="ts">
 	import RoundedPlaneGeometry from './RoundedPlaneGeometry.svelte';
 	import { OrbitControls } from '@threlte/extras';
-	import { T, useFrame } from '@threlte/core';
+	import { T, useTask } from '@threlte/core';
 
 	let d = 0;
 	let ry = 0;
-	useFrame((_, delta) => {
+	useTask((delta) => {
 		d += delta;
 		ry = 0.5 * Math.sin(d);
 	});

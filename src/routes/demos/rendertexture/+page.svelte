@@ -2,7 +2,7 @@
 	import RenderTexture from './RenderTexture.svelte';
 	import { ContactShadows, OrbitControls, Text } from '@threlte/extras';
 	import { PerspectiveCamera } from 'three';
-	import { T, useFrame } from '@threlte/core';
+	import { T, useTask } from '@threlte/core';
 
 	const camera = new PerspectiveCamera();
 	camera.position.setZ(10);
@@ -11,7 +11,7 @@
 	let x = 0;
 	let y = 0;
 
-	useFrame((_, delta) => {
+	useTask((delta) => {
 		_delta += delta;
 		x = 2 * Math.sin(_delta);
 		y = 2 * Math.cos(_delta);
