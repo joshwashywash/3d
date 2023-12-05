@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@threlte/core':
-    specifier: ^7.0.2
-    version: 7.0.2(svelte@4.2.8)(three@0.159.0)
+    specifier: ^7.0.5
+    version: 7.0.5(svelte@4.2.8)(three@0.159.0)
   '@threlte/extras':
-    specifier: ^7.5.4
-    version: 7.5.4(svelte@4.2.8)(three@0.159.0)
+    specifier: ^8.0.3
+    version: 8.0.3(svelte@4.2.8)(three@0.159.0)
   camera-controls:
     specifier: ^2.7.3
     version: 2.7.3(three@0.159.0)
@@ -53,8 +53,8 @@ devDependencies:
     specifier: ^3.6.2
     version: 3.6.2(postcss@8.4.32)(svelte@4.2.8)
   tailwindcss:
-    specifier: ^3.3.5
-    version: 3.3.5
+    specifier: ^3.3.6
+    version: 3.3.6
   tslib:
     specifier: ^2.6.2
     version: 2.6.2
@@ -413,8 +413,8 @@ packages:
       - supports-color
     dev: true
 
-  /@threlte/core@7.0.2(svelte@4.2.8)(three@0.159.0):
-    resolution: {integrity: sha512-PCvk5K9jNjsrqGcRHn9LpkX/ulmlABfUlJ/0ygaxioO1Po/vRBpVWepm8Tg/evtrDru0/GaAablbXk9slxEfSQ==}
+  /@threlte/core@7.0.5(svelte@4.2.8)(three@0.159.0):
+    resolution: {integrity: sha512-tKIlAcdWN3IO5HU6TGaSal6MtMZ5VSxYF/zMPdDFjFjwYB9Y9XIcl+00+S+HA0Pf2zvGa4478gGHtRjGVm1ykA==}
     peerDependencies:
       svelte: '>=4'
       three: '>=0.133'
@@ -423,8 +423,8 @@ packages:
       three: 0.159.0
     dev: false
 
-  /@threlte/extras@7.5.4(svelte@4.2.8)(three@0.159.0):
-    resolution: {integrity: sha512-BsvUlzJhAnWqRwj3oUCruTb3i3JOKIxdR6c8bI16N7QmReyUcYcoGTB/UKQEt14rreb8PQMF26lstofI9IwA4g==}
+  /@threlte/extras@8.0.3(svelte@4.2.8)(three@0.159.0):
+    resolution: {integrity: sha512-8rwAXVtz3ZKwJBQPG4lSG58m1fqRuQ+QWQvSxiitdGVSO9cTD1YoiQVQXchpRIoIZ9RrF+q+1gp6KYzpmlySaw==}
     peerDependencies:
       svelte: '>=4'
       three: '>=0.133'
@@ -991,6 +991,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /lilconfig@3.0.0:
+    resolution: {integrity: sha512-K2U4W2Ff5ibV7j7ydLr+zLAkIg5JJ4lPn1Ltsdt+Tz/IjQ8buJ55pZAxoP34lqIiwtF9iAvtLv3JGv7CAyAg+g==}
+    engines: {node: '>=14'}
+    dev: true
+
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
@@ -1227,8 +1232,8 @@ packages:
       postcss: 8.4.32
     dev: true
 
-  /postcss-load-config@4.0.1(postcss@8.4.32):
-    resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
+  /postcss-load-config@4.0.2(postcss@8.4.32):
+    resolution: {integrity: sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ==}
     engines: {node: '>= 14'}
     peerDependencies:
       postcss: '>=8.0.9'
@@ -1239,7 +1244,7 @@ packages:
       ts-node:
         optional: true
     dependencies:
-      lilconfig: 2.1.0
+      lilconfig: 3.0.0
       postcss: 8.4.32
       yaml: 2.3.4
     dev: true
@@ -1536,8 +1541,8 @@ packages:
       magic-string: 0.30.5
       periscopic: 3.1.0
 
-  /tailwindcss@3.3.5:
-    resolution: {integrity: sha512-5SEZU4J7pxZgSkv7FP1zY8i2TIAOooNZ1e/OGtxIEv6GltpoiXUqWvLy89+a10qYTB1N5Ifkuw9lqQkN9sscvA==}
+  /tailwindcss@3.3.6:
+    resolution: {integrity: sha512-AKjF7qbbLvLaPieoKeTjG1+FyNZT6KaJMJPFeQyLfIp7l82ggH1fbHJSsYIvnbTFQOlkh+gBYpyby5GT1LIdLw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -1558,7 +1563,7 @@ packages:
       postcss: 8.4.32
       postcss-import: 15.1.0(postcss@8.4.32)
       postcss-js: 4.0.1(postcss@8.4.32)
-      postcss-load-config: 4.0.1(postcss@8.4.32)
+      postcss-load-config: 4.0.2(postcss@8.4.32)
       postcss-nested: 6.0.1(postcss@8.4.32)
       postcss-selector-parser: 6.0.13
       resolve: 1.22.8

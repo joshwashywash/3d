@@ -23,15 +23,15 @@
 		"prettier-plugin-svelte": "^3.1.2",
 		"svelte": "^4.2.8",
 		"svelte-check": "^3.6.2",
-		"tailwindcss": "^3.3.5",
+		"tailwindcss": "^3.3.6",
 		"tslib": "^2.6.2",
 		"typescript": "^5.3.2",
 		"vite": "^4.5.0"
 	},
 	"type": "module",
 	"dependencies": {
-		"@threlte/core": "^7.0.2",
-		"@threlte/extras": "^7.5.4",
+		"@threlte/core": "^7.0.5",
+		"@threlte/extras": "^8.0.3",
 		"camera-controls": "^2.7.3",
 		"gh-pages": "^6.1.0",
 		"three": "^0.159.0"

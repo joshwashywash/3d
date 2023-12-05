@@ -1,9 +1,12 @@
 <script lang="ts">
-	import { Vector3 } from 'three';
-	import { T, useThrelte } from '@threlte/core';
-	import { interactivity, OrbitControls } from '@threlte/extras';
-	import { writable } from 'svelte/store';
 	import useDrag from '$lib/hooks/drag';
+	import { T, useThrelte } from '@threlte/core';
+	import { Vector3 } from 'three';
+	import { interactivity, OrbitControls, useCursor } from '@threlte/extras';
+	import { writable } from 'svelte/store';
+
+	const pointer = writable('move');
+	const { onPointerEnter, onPointerLeave } = useCursor(pointer);
 
 	const {
 		camera,
@@ -20,22 +23,28 @@
 	interactivity();
 </script>
 
-<T.AmbientLight />
+<T.AmbientLight intensitiy={0.5} />
 
-<T.PerspectiveCamera makeDefault position.z={5} position.x={3} position.y={2}>
+<T.PerspectiveCamera makeDefault position.x={3} position.y={2} position.z={5}>
 	<OrbitControls enabled={!$enabled} />
+	<T.DirectionalLight />
 </T.PerspectiveCamera>
 
 <T.Mesh
+	on:pointerenter={onPointerEnter}
+	on:ponterleave={onPointerLeave}
 	position.x={$position.x}
 	position.y={$position.y}
 	position.z={$position.z}
 	on:pointerdown={down}
 >
 	<T.BoxGeometry />
+	<T.MeshStandardMaterial />
 </T.Mesh>
 
-<T.Mesh scale={4}>
-	<T.PlaneGeometry />
-	<T.MeshBasicMaterial color="blue" transparent opacity={0.5} />
-</T.Mesh>
+{#if $enabled}
+	<T.Mesh scale={4}>
+		<T.PlaneGeometry />
+		<T.MeshBasicMaterial color="#00ffff" transparent opacity={0.5} />
+	</T.Mesh>
+{/if}
