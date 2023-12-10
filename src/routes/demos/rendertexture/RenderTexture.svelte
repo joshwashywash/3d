@@ -4,8 +4,8 @@
 	import { Scene, WebGLRenderTarget } from 'three';
 	import { onDestroy } from 'svelte';
 
-	export let width = 512;
-	export let height = 512;
+	export let width: number;
+	export let height: number;
 
 	export let camera: OrthographicCamera | PerspectiveCamera;
 
@@ -27,10 +27,10 @@
 	});
 </script>
 
-<T is={target.texture} attach="map" />
-
 <HierarchicalObject>
 	<T is={ref}>
 		<slot ref={target.texture} />
 	</T>
 </HierarchicalObject>
+
+<T is={target.texture} attach="map" />

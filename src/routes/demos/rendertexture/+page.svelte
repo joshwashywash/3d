@@ -7,6 +7,9 @@
 	const camera = new PerspectiveCamera();
 	camera.position.setZ(10);
 
+	const width = 512;
+	const height = 512;
+
 	let _delta = 0;
 	let x = 0;
 	let y = 0;
@@ -27,11 +30,11 @@
 
 <T.Mesh>
 	<T.MeshStandardMaterial>
-		<RenderTexture {camera}>
-			<T.Color attach="background" args={['11aaff']} />
+		<RenderTexture {camera} {width} {height}>
+			<T.Color attach="background" args={['#11aaff']} />
 			<Text
 				position.x={x}
-				text={'hello'}
+				text="hello"
 				color="#555"
 				fontSize={4}
 				anchorX="center"
