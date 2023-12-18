@@ -1,20 +1,20 @@
 <script lang="ts">
-	import { T, forwardEventHandlers } from '@threlte/core';
-	import { Shape, ShapeGeometry } from 'three';
 	import type { Events, Props, Slots } from '@threlte/core';
+	import { Shape, ShapeGeometry } from 'three';
+	import { T, forwardEventHandlers } from '@threlte/core';
 
 	type $$Props = Props<ShapeGeometry> & {
-		width: number;
 		height: number;
 		radius: number;
+		width: number;
 	};
 
-	type $$Slots = Slots<ShapeGeometry>;
 	type $$Events = Events<ShapeGeometry>;
+	type $$Slots = Slots<ShapeGeometry>;
 
-	export let width: $$Props['width'];
 	export let height: $$Props['height'];
 	export let radius: $$Props['radius'];
+	export let width: $$Props['width'];
 
 	$: w = 0.5 * width;
 
