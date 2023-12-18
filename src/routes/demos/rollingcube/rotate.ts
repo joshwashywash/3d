@@ -2,7 +2,7 @@ import type { CurrentWritable } from '@threlte/core';
 import type { Tweened } from 'svelte/motion';
 import type { Writable } from 'svelte/store';
 import { currentWritable } from '@threlte/core';
-import { degToRad } from 'three/src/math/MathUtils';
+import { degToRad } from 'three/src/math/MathUtils.js';
 import { derived, readonly, writable } from 'svelte/store';
 import { tweened } from 'svelte/motion';
 

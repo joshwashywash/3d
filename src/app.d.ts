@@ -5,8 +5,10 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		type PageData = {
-			title: string;
-			description: string;
+			meta: {
+				title: string;
+				description: string;
+			};
 		};
 		// interface Platform {}
 	}

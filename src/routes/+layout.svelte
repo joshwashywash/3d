@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-	<title>{$page.data.title}</title>
-	<meta name="description" content={$page.data.description} />
+	<title>{$page.data.meta.title}</title>
+	<meta name="description" content={$page.data.meta.description} />
 </svelte:head>
 
 <slot />

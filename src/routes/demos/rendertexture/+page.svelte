@@ -1,14 +1,9 @@
 <script lang="ts">
 	import RenderTexture from './RenderTexture.svelte';
 	import { ContactShadows, OrbitControls, Text } from '@threlte/extras';
-	import { PerspectiveCamera } from 'three';
 	import { T, useTask } from '@threlte/core';
 
-	const camera = new PerspectiveCamera();
-	camera.position.setZ(10);
-
-	const width = 512;
-	const height = 512;
+	export let data;
 
 	let _delta = 0;
 	let x = 0;
@@ -21,27 +16,20 @@
 	});
 </script>
 
-<T.PerspectiveCamera makeDefault position.x={5} position.y={5} position.z={5} fov={25}>
+<T.PerspectiveCamera {...data.camera} makeDefault>
 	<OrbitControls />
 </T.PerspectiveCamera>
 
-<T.AmbientLight intensity={0.5} />
-<T.DirectionalLight position={[10, 10, 5]} />
+<T.AmbientLight {...data.ambientLight} />
+<T.DirectionalLight {...data.directionalLight} />
 
 <T.Mesh>
 	<T.MeshStandardMaterial>
-		<RenderTexture {camera} {width} {height}>
-			<T.Color attach="background" args={['#11aaff']} />
-			<Text
-				position.x={x}
-				text="hello"
-				color="#555"
-				fontSize={4}
-				anchorX="center"
-				anchorY="middle"
-			/>
-			<T.AmbientLight intensity={0.5} />
-			<T.DirectionalLight position={[10, 10, 5]} />
+		<RenderTexture {...data.renderTexture.props}>
+			<T.Color attach="background" args={[data.renderTexture.scene.background.color]} />
+			<Text anchorX="center" anchorY="middle" {...data.renderTexture.scene.text} position.x={x} />
+			<T.AmbientLight {...data.renderTexture.scene.ambientLight} />
+			<T.DirectionalLight {...data.renderTexture.scene.directionalLight} />
 			<T.Mesh position.y={y}>
 				<T.DodecahedronGeometry />
 				<T.MeshStandardMaterial />
@@ -50,4 +38,4 @@
 	</T.MeshStandardMaterial>
 	<T.BoxGeometry />
 </T.Mesh>
-<ContactShadows frames={1} position={[0, -0.5, 0]} blur={1} opacity={0.75} />
+<ContactShadows {...data.contactShadows} />

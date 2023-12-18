@@ -5,6 +5,8 @@
 	import { interactivity, OrbitControls, useCursor } from '@threlte/extras';
 	import { writable } from 'svelte/store';
 
+	export let data;
+
 	const pointer = writable('move');
 	const { onPointerEnter, onPointerLeave } = useCursor(pointer);
 
@@ -23,9 +25,9 @@
 	interactivity();
 </script>
 
-<T.AmbientLight intensitiy={0.5} />
+<T.AmbientLight {...data.ambientLight} />
 
-<T.PerspectiveCamera makeDefault position.x={3} position.y={2} position.z={5}>
+<T.PerspectiveCamera makeDefault {...data.camera}>
 	<OrbitControls enabled={!$enabled} />
 	<T.DirectionalLight />
 </T.PerspectiveCamera>
@@ -43,8 +45,8 @@
 </T.Mesh>
 
 {#if $enabled}
-	<T.Mesh scale={4}>
+	<T.Mesh {...data.plane.props}>
 		<T.PlaneGeometry />
-		<T.MeshBasicMaterial color="#00ffff" transparent opacity={0.5} />
+		<T.MeshBasicMaterial {...data.plane.material} />
 	</T.Mesh>
 {/if}

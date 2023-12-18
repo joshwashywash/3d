@@ -4,6 +4,8 @@
 	import { base } from '$app/paths';
 	import { rotate } from './rotate';
 
+	export let data;
+
 	const BOX_SIZE = 1;
 
 	const HALF_BOX_SIZE = 0.5 * BOX_SIZE;
@@ -47,15 +49,15 @@
 	}}
 />
 
-<T.AmbientLight />
+<T.AmbientLight {...data.ambientLight} />
 
-<Grid sectionColor="#00ffff" infiniteGrid cellColor="#00ffff" />
+<Grid {...data.grid} />
 
-<T.PerspectiveCamera makeDefault position.x={5} position.y={5} position.z={5}>
+<T.PerspectiveCamera makeDefault {...data.camera}>
 	<OrbitControls />
 </T.PerspectiveCamera>
 
-<T.DirectionalLight color="#ff0000" let:ref position.x={-2} position.y={2} position.z={-2}>
+<T.DirectionalLight let:ref {...data.directionalLight}>
 	<Portal object={scene}>
 		<T.DirectionalLightHelper args={[ref]} />
 	</Portal>

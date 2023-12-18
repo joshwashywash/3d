@@ -3,6 +3,8 @@
 	import { OrbitControls } from '@threlte/extras';
 	import { T, useTask } from '@threlte/core';
 
+	export let data;
+
 	let d = 0;
 	let ry = 0;
 	useTask((delta) => {
@@ -11,13 +13,13 @@
 	});
 </script>
 
-<T.AmbientLight intensity={1} />
+<T.AmbientLight />
 
-<T.PerspectiveCamera makeDefault position.z={5}>
+<T.PerspectiveCamera makeDefault {...data.camera}>
 	<OrbitControls />
 </T.PerspectiveCamera>
 
 <T.Mesh rotation.y={ry}>
-	<RoundedPlaneGeometry width={2} height={2} radius={0.5} />
+	<RoundedPlaneGeometry {...data.plane} />
 	<T.MeshNormalMaterial />
 </T.Mesh>
