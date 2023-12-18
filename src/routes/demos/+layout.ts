@@ -1,4 +1,4 @@
-import type { LayoutServerLoad } from './$types';
+import type { LayoutLoad } from './$types';
 
 type Link = {
 	href: string;
@@ -12,7 +12,7 @@ const links: Link[] = [
 	{ href: 'rollingcube', text: 'rolling cube' }
 ];
 
-export const load: LayoutServerLoad = () => {
+export const load: LayoutLoad = () => {
 	return {
 		links
 	};
