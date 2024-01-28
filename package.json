@@ -19,6 +19,7 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/three": "^0.159.0",
 		"autoprefixer": "^10.4.16",
+		"gh-pages": "^6.1.0",
 		"postcss": "^8.4.32",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
@@ -34,7 +35,6 @@
 		"@threlte/core": "^7.0.12",
 		"@threlte/extras": "^8.0.10",
 		"camera-controls": "^2.7.3",
-		"gh-pages": "^6.1.0",
 		"three": "^0.159.0"
 	}
 }
