@@ -31,5 +31,5 @@
 </T.PerspectiveCamera>
 
 {#if context !== null}
-	<Points {context} />
+	<Points offset={data.offsetZ} {context} />
 {/if}

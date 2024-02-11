@@ -3,6 +3,7 @@
 	import { T } from '@threlte/core';
 
 	export let context: OffscreenCanvasRenderingContext2D;
+	export let offset: number;
 
 	$: imageData = context.getImageData(
 		0,
@@ -22,10 +23,10 @@
 	): Float32Array => {
 		const positions = new Float32Array(POSITION_ITEM_SIZE * pixels.length);
 		for (let i = 0; i < pixels.length; i += 1) {
-			positions[POSITION_ITEM_SIZE * i + 0] = (i % width) - 0.5 * width;
-			positions[POSITION_ITEM_SIZE * i + 1] =
-				0 - Math.floor(i / width) + 0.5 * height;
-			positions[POSITION_ITEM_SIZE * i + 2] = luminance(pixels[i] / 0xff);
+			const o = POSITION_ITEM_SIZE * i;
+			positions[o + 0] = (i % width) - 0.5 * width;
+			positions[o + 1] = 0 - Math.floor(i / width) + 0.5 * height;
+			positions[o + 2] = offset * (luminance(pixels[i]) / 0xff);
 		}
 
 		return positions;

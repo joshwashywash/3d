@@ -3,6 +3,7 @@ import type { PageLoad } from './$types';
 export const load: PageLoad = async () => {
 	return {
 		imgSrc: '/rosetti_pia_de_tolomei.jpeg',
+		offsetZ: 50,
 		meta: {
 			description: 'images in 3d',
 			instructions:
