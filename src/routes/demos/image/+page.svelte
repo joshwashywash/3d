@@ -6,6 +6,7 @@
 	export let data;
 
 	let context: null | OffscreenCanvasRenderingContext2D = null;
+	let z = 0;
 
 	const image = new Image();
 	image.src = data.imgSrc;
@@ -13,6 +14,7 @@
 		'load',
 		() => {
 			const canvas = new OffscreenCanvas(image.width, image.height);
+			z = image.width;
 			context = canvas.getContext('2d');
 			if (context !== null) {
 				context.drawImage(image, 0, 0);
@@ -24,7 +26,7 @@
 
 <T.AmbientLight />
 
-<T.PerspectiveCamera makeDefault position.z={100}>
+<T.PerspectiveCamera makeDefault position.z={z}>
 	<OrbitControls />
 </T.PerspectiveCamera>
 
