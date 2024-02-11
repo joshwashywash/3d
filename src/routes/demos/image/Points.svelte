@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { luminance } from '$lib/colors';
 	import { T } from '@threlte/core';
 
 	export let context: OffscreenCanvasRenderingContext2D;
@@ -11,22 +12,6 @@
 	);
 
 	$: pixels = new Uint32Array(imageData.data.buffer ?? []);
-
-	const luminance = (n: number) => {
-		return 0.2126 * red(n) + 0.7152 * green(n) + 0.0722 * blue(n);
-	};
-
-	const red = (color: number) => {
-		return (color >> 24) & 0xff;
-	};
-
-	const green = (color: number) => {
-		return (color >> 16) & 0xff;
-	};
-
-	const blue = (color: number) => {
-		return (color >> 8) & 0xff;
-	};
 
 	const POSITION_ITEM_SIZE = 3;
 
