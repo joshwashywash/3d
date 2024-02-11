@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RenderTexture from './RenderTexture.svelte';
+	import RenderTexture from '$lib/components/RenderTexture.svelte';
 	import { ContactShadows, OrbitControls, Text } from '@threlte/extras';
 	import { T, useTask } from '@threlte/core';
 
@@ -26,8 +26,16 @@
 <T.Mesh>
 	<T.MeshStandardMaterial>
 		<RenderTexture {...data.renderTexture.props}>
-			<T.Color attach="background" args={[data.renderTexture.scene.background.color]} />
-			<Text anchorX="center" anchorY="middle" {...data.renderTexture.scene.text} position.x={x} />
+			<T.Color
+				attach="background"
+				args={[data.renderTexture.scene.background.color]}
+			/>
+			<Text
+				anchorX="center"
+				anchorY="middle"
+				{...data.renderTexture.scene.text}
+				position.x={x}
+			/>
 			<T.AmbientLight {...data.renderTexture.scene.ambientLight} />
 			<T.DirectionalLight {...data.renderTexture.scene.directionalLight} />
 			<T.Mesh position.y={y}>

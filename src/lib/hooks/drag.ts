@@ -25,10 +25,15 @@ export default (canvas: HTMLCanvasElement, camera: CurrentWritable<Camera>) => {
 					offset.copy(intersection).sub(object.position);
 
 					const move = (e: PointerEvent) => {
-						pp.set(2 * (e.offsetX / canvas.width) - 1, 1 - 2 * (e.offsetY / canvas.height));
+						pp.set(
+							2 * (e.offsetX / canvas.width) - 1,
+							1 - 2 * (e.offsetY / canvas.height)
+						);
 						caster.setFromCamera(pp, camera.current);
 						if (caster.ray.intersectPlane(plane, intersection) !== null) {
-							position.update((p) => p.copy(intersection.sub(offset).applyMatrix4(matrix)));
+							position.update((p) =>
+								p.copy(intersection.sub(offset).applyMatrix4(matrix))
+							);
 						}
 					};
 

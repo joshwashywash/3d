@@ -6,9 +6,9 @@ type Link = {
 };
 
 const links: Link[] = [
+	{ href: 'image', text: 'image' },
 	{ href: 'drag', text: 'drag in plane' },
-	{ href: 'rendertexture', text: 'render texture' },
-	{ href: 'rollingcube', text: 'rolling cube' }
+	{ href: 'rendertexture', text: 'render texture' }
 ];
 
 export const load: LayoutLoad = () => {
