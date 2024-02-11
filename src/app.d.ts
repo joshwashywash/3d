@@ -6,8 +6,9 @@ declare global {
 		// interface Locals {}
 		type PageData = {
 			meta: {
-				title: string;
 				description: string;
+				instructions?: string;
+				title: string;
 			};
 		};
 		// interface Platform {}

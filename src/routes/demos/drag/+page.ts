@@ -20,6 +20,8 @@ export const load: PageLoad = () => {
 		},
 		meta: {
 			description: 'Demo showing how to drag an object in particular plane.',
+			instructions:
+				'drag the cube to move it around in a plane. drag anywhere else to rotate the scene',
 			title: 'Drag Object in a Plane'
 		}
 	};
