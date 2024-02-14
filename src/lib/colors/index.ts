@@ -2,6 +2,14 @@ export const luminance = (n: number) => {
 	return 0.2126 * red(n) + 0.7152 * green(n) + 0.0722 * blue(n);
 };
 
+export const perceivedLuminance = (n: number) => {
+	return 0.299 * red(n) + 0.587 * green(n) + 0.114 * blue(n);
+};
+
+export const brightness = (n: number) => {
+	return (red(n) + green(n) + blue(n)) / 3;
+};
+
 export const red = (color: number) => {
 	return (color >> 24) & 0xff;
 };
