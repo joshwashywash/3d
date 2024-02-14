@@ -1,8 +1,9 @@
 import type { PageLoad } from './$types';
+import { base } from '$app/paths';
 
 export const load: PageLoad = async () => {
 	return {
-		imgSrc: '/me.jpeg',
+		imgSrc: `${base}/me.jpeg`,
 		scaleZ: 50,
 		meta: {
 			description: 'images in 3d',
