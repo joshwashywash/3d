@@ -7,7 +7,6 @@ type Link = {
 
 const links: Link[] = [
 	{ href: 'image', text: 'image' },
-	{ href: 'drag', text: 'drag in plane' },
 	{ href: 'rendertexture', text: 'render texture' }
 ];
 
