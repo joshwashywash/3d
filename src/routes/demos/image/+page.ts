@@ -4,11 +4,11 @@ import { base } from '$app/paths';
 export const load: PageLoad = async () => {
 	return {
 		imgSrc: `${base}/me.jpeg`,
-		scaleZ: 50,
+		scale: 100,
 		meta: {
 			description: 'images in 3d',
 			instructions:
-				'drag in the scene to orbit the camera. mouse wheel/pinch zooms in and out. right pointer to pan the scene.',
+				'drag in the scene to orbit the camera. mouse wheel or pinch to zoom in and out. right pointer or double drag to pan the scene.',
 			title: 'image'
 		}
 	};
