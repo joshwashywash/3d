@@ -1,13 +1,12 @@
-import type { Actions, PageServerLoad } from './$types';
+import type { PageServerLoad } from './$types';
 import { base } from '$app/paths';
-import { fail } from '@sveltejs/kit';
 import { instance, maxSize, mimeType, object } from 'valibot';
-import { superValidate, withFiles } from 'sveltekit-superforms';
-import { valibot } from 'sveltekit-superforms/adapters';
+
+const MAX_SIZE = 1024 * 1024 * 10;
 
 const imageSchema = instance(File, [
 	mimeType(['image/jpeg', 'image/png']),
-	maxSize(1024 * 1024 * 10)
+	maxSize(MAX_SIZE)
 ]);
 
 const schema = object({
@@ -25,14 +24,4 @@ export const load: PageServerLoad = async () => {
 			title: 'image'
 		}
 	};
-};
-
-export const actions: Actions = {
-	async default(event) {
-		const form = await superValidate(event.request, valibot(schema));
-		if (form.valid) {
-			return withFiles({ form });
-		}
-		return fail(400, withFiles({ form }));
-	}
 };
