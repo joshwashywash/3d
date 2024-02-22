@@ -2,14 +2,13 @@
 	import type { OrthographicCamera, PerspectiveCamera } from 'three';
 	import { HierarchicalObject, T, useTask, useThrelte } from '@threlte/core';
 	import { Scene, WebGLRenderTarget } from 'three';
-	import { onDestroy } from 'svelte';
 
 	export let width: number;
 	export let height: number;
 
 	export let camera: OrthographicCamera | PerspectiveCamera;
 
-	const ref = new Scene();
+	let scene: Scene;
 
 	const target = new WebGLRenderTarget();
 	$: target.setSize(width, height);
@@ -18,19 +17,15 @@
 
 	useTask(() => {
 		renderer.setRenderTarget(target);
-		renderer.render(ref, camera);
+		renderer.render(scene, camera);
 		renderer.setRenderTarget(null);
-	});
-
-	onDestroy(() => {
-		target.dispose();
 	});
 </script>
 
 <HierarchicalObject>
-	<T is={ref}>
+	<T.Scene bind:ref={scene}>
 		<slot ref={target.texture} />
-	</T>
+	</T.Scene>
 </HierarchicalObject>
 
 <T is={target.texture} attach="map" />
