@@ -60,8 +60,8 @@
 
 <T.AmbientLight />
 
-<T.PerspectiveCamera makeDefault position.z={z}>
-	<OrbitControls />
+<T.PerspectiveCamera makeDefault position.z={z} fov={30}>
+	<OrbitControls autoRotate />
 </T.PerspectiveCamera>
 
 <T.Points position.x={positionX} position.y={positionY}>
