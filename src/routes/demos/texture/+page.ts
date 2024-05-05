@@ -1,9 +1,11 @@
+import { base } from '$app/paths';
+
 export const load = () => {
 	const pointRadius = 0.01;
 	return {
 		svg: {
 			image: {
-				src: '/uv_grid.jpg',
+				src: base + '/uv_grid.jpg',
 			},
 			point: {
 				radius: pointRadius,
