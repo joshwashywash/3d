@@ -9,8 +9,7 @@
 		"dev": "vite dev",
 		"format": "prettier . --write .",
 		"lint": "prettier --plugin-search-dir . --check .",
-		"preview": "vite preview",
-		"publish": "pnpm build && gh-pages -d build -t"
+		"preview": "vite preview"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.2.0",
@@ -19,7 +18,6 @@
 		"@sveltejs/vite-plugin-svelte": "^3.1.0",
 		"@types/three": "^0.161.2",
 		"autoprefixer": "^10.4.19",
-		"gh-pages": "^6.1.1",
 		"postcss": "^8.4.38",
 		"prettier": "^3.2.5",
 		"prettier-plugin-svelte": "^3.2.3",
