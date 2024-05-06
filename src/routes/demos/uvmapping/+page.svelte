@@ -57,7 +57,7 @@
 	$: left = 0 - padding;
 	$: top = 0 - padding;
 	$: right = 1 + 2 * padding;
-	$: bottom = 1 + 2 * padding;
+	$: bottom = right;
 	$: viewBox = `${left} ${top} ${right} ${bottom}`;
 
 	let triangleColor = '#ffffff';
