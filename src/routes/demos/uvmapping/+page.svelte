@@ -6,11 +6,11 @@
 		BufferAttribute,
 		Face,
 		InterleavedBufferAttribute,
-		Mesh,
 	} from 'three';
 	import type { IntersectionEvent } from '@threlte/extras';
 	import { Canvas, T } from '@threlte/core';
 	import { Color, Element, Folder, Pane } from 'svelte-tweakpane-ui';
+	import isMesh from '$lib/functions/isMesh';
 
 	export let data;
 
@@ -39,11 +39,7 @@
 
 	$: points = triangle.map((t) => `${t.x},${t.y}`).join(' ');
 
-	let invalidate: () => void | undefined;
-
-	const isMesh = (o: any): o is Mesh => {
-		return o.isMesh;
-	};
+	let invalidate: (() => void) | undefined;
 
 	const onclick = (event: IntersectionEvent<PointerEvent>) => {
 		face = event.face;
@@ -55,7 +51,7 @@
 	$: padding = data.svg.viewBox.padding;
 
 	$: left = 0 - padding;
-	$: top = 0 - padding;
+	$: top = left;
 	$: right = 1 + 2 * padding;
 	$: bottom = right;
 	$: viewBox = `${left} ${top} ${right} ${bottom}`;
@@ -94,7 +90,7 @@
 								const { x, y } = e.detail;
 								uv.setXY(t.index, clamp(x), 1 - clamp(y));
 								uv.needsUpdate = true;
-								invalidate();
+								invalidate?.();
 							}
 						}}
 					/>
