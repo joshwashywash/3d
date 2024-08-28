@@ -1,6 +1,11 @@
 <script lang="ts">
-	import type { IntersectionEvent } from '@threlte/extras';
-	import { OrbitControls, interactivity, useTexture } from '@threlte/extras';
+	import type { EventMap } from '@threlte/extras';
+	import {
+		OrbitControls,
+		PerfMonitor,
+		interactivity,
+		useTexture,
+	} from '@threlte/extras';
 	import { T, useThrelte } from '@threlte/core';
 
 	interactivity({
@@ -10,7 +15,7 @@
 	});
 
 	export let src: string;
-	export let onclick: (event: IntersectionEvent<PointerEvent>) => void;
+	export let onclick: (event: EventMap['click']) => void;
 
 	$: texture = useTexture(src);
 
@@ -22,6 +27,8 @@
 <T.PerspectiveCamera makeDefault position={5}>
 	<OrbitControls />
 </T.PerspectiveCamera>
+
+<PerfMonitor showGraph={false} />
 
 {#await texture then map}
 	<T.Mesh on:click={onclick}>

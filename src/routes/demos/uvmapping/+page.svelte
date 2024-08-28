@@ -7,7 +7,7 @@
 		Face,
 		InterleavedBufferAttribute,
 	} from 'three';
-	import type { IntersectionEvent } from '@threlte/extras';
+	import type { EventMap } from '@threlte/extras';
 	import { Canvas, T } from '@threlte/core';
 	import { Color, Element, Folder, Pane } from 'svelte-tweakpane-ui';
 	import isMesh from '$lib/functions/isMesh';
@@ -41,7 +41,7 @@
 
 	let invalidate: (() => void) | undefined;
 
-	const onclick = (event: IntersectionEvent<PointerEvent>) => {
+	const onclick = (event: EventMap['click']) => {
 		face = event.face;
 		if (isMesh(event.object)) {
 			uv = event.object.geometry.getAttribute('uv');
