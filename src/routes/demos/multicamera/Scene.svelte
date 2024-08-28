@@ -32,6 +32,7 @@
 
 	useTask(
 		() => {
+			const before = renderer.getScissorTest();
 			renderer.setScissorTest(true);
 			renderer.setViewport(0, 0, halfWidth, $size.height);
 			renderer.setScissor(0, 0, halfWidth, $size.height);
@@ -39,14 +40,20 @@
 			renderer.setViewport(halfWidth, 0, halfWidth, $size.height);
 			renderer.setScissor(halfWidth, 0, halfWidth, $size.height);
 			renderer.render(scene, rightCamera);
-			renderer.setScissorTest(false);
+			renderer.setScissorTest(before);
 		},
 		{ stage: renderStage, autoInvalidate: false },
 	);
 </script>
 
-<T.PerspectiveCamera position.z={5} bind:ref={leftCamera} />
-<T.PerspectiveCamera position.z={3} bind:ref={rightCamera} />
+<T.PerspectiveCamera
+	position={5}
+	bind:ref={leftCamera}
+	on:create={({ ref }) => {
+		ref.lookAt(0, 0, 0);
+	}}
+/>
+<T.PerspectiveCamera position.z={5} bind:ref={rightCamera} />
 
 <T.Mesh>
 	<T.BoxGeometry />
