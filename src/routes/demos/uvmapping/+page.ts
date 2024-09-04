@@ -18,8 +18,8 @@ export const load = () => {
 			},
 		},
 		meta: {
-			title: 'uv mapping tool',
-			description: 'a work-in-progress uv mapping tool',
+			title: 'UV mapping tool',
+			description: 'a work-in-progress uv mapping tool in threlte',
 		},
 	};
 };
