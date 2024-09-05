@@ -27,6 +27,7 @@
 
 	const { renderer } = useThrelte();
 
+	// start when texture is added
 	const { start, stop } = useTask(
 		() => {
 			const last = renderer.getRenderTarget();
