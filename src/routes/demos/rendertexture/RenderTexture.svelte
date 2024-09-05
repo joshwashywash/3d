@@ -1,8 +1,13 @@
 <script lang="ts">
-	import type { OrthographicCamera, PerspectiveCamera, Texture } from 'three';
+	import type {
+		OrthographicCamera,
+		PerspectiveCamera,
+		Scene,
+		Texture,
+	} from 'three';
 	import type { Props } from '@threlte/core';
 	import { HierarchicalObject, T, useTask, useThrelte } from '@threlte/core';
-	import { Scene, WebGLRenderTarget } from 'three';
+	import { WebGLRenderTarget } from 'three';
 	import { onDestroy } from 'svelte';
 
 	type $$Props = Props<Texture> & {
@@ -15,27 +20,30 @@
 	export let height: $$Props['height'];
 	export let camera: $$Props['camera'];
 
-	const scene = new Scene();
+	let scene: Scene;
 
 	const target = new WebGLRenderTarget();
 	$: target.setSize(width, height);
 
 	const { renderer } = useThrelte();
 
-	const { start, stop } = useTask(() => {
-		const last = renderer.getRenderTarget();
-		renderer.setRenderTarget(target);
-		renderer.render(scene, camera);
-		renderer.setRenderTarget(last);
-	});
+	const { start, stop } = useTask(
+		() => {
+			const last = renderer.getRenderTarget();
+			renderer.setRenderTarget(target);
+			renderer.render(scene, camera);
+			renderer.setRenderTarget(last);
+		},
+		{ autoStart: false },
+	);
 
 	onDestroy(target.dispose);
 </script>
 
 <HierarchicalObject>
-	<T is={scene}>
+	<T.Scene bind:ref={scene}>
 		<slot ref={target.texture} />
-	</T>
+	</T.Scene>
 </HierarchicalObject>
 
 <T
